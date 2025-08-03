@@ -1,0 +1,52 @@
+{
+  "Monday": [
+    "Hindi",
+    "MS",
+    "MAL",
+    "CE",
+    "AT",
+    "SS",
+    "ENG",
+    "SC"
+  ],
+  "Tuesday": [
+    "Hindi",
+    "PT",
+    "SC",
+    "COML",
+    "AT",
+    "ENG",
+    "MAL",
+    "AT"
+  ],
+  "Wednesday": [
+    "Hindi",
+    "SS",
+    "MAL",
+    "D/I",
+    "AT",
+    "ENG",
+    "SC",
+    "MAL"
+  ],
+  "Thursday": [
+    "Hindi",
+    "MAL",
+    "SS",
+    "ENG",
+    "M/A",
+    "COM",
+    "AT",
+    "AT"
+  ],
+  "Friday": [
+    "Hindi",
+    "SC",
+    "AT",
+    "SS",
+    "GK",
+    "ENG",
+    "PT",
+    "CCA"
+  ]
+}

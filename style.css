@@ -58,7 +58,7 @@ h1, h2 {
     outline: none;
     background: #ffe6f7;
 }
-#save-btn, #save-google-btn, #toggle-form-btn {
+#save-btn, #save-google-btn, #toggle-form-btn, #download-json-btn, #upload-json-btn, label[for="upload-json"] span {
     display: block;
     margin: 16px auto;
     padding: 12px 28px;
@@ -71,8 +71,9 @@ h1, h2 {
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(255, 105, 180, 0.15);
     transition: background 0.2s, transform 0.2s;
+    text-align: center;
 }
-#save-btn:hover, #save-google-btn:hover, #toggle-form-btn:hover {
+#save-btn:hover, #save-google-btn:hover, #toggle-form-btn:hover, #download-json-btn:hover, #upload-json-btn:hover, label[for="upload-json"] span:hover {
     background: linear-gradient(90deg, #ff69b4 0%, #ffb6c1 100%);
     transform: scale(1.05);
 }
