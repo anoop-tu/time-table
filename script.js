@@ -118,6 +118,37 @@ function unfoldInputForm() {
     document.getElementById("toggle-form-btn").style.display = "none";
 }
 
+function downloadTimetableJSON() {
+    const timetable = getTimetableFromInputs();
+    const dataStr = "data:application/json;charset=utf-8," + encodeURIComponent(JSON.stringify(timetable, null, 2));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "school_timetable.json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+}
+
+function uploadTimetableJSON(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const timetable = JSON.parse(e.target.result);
+            localStorage.setItem("schoolTimetable", JSON.stringify(timetable));
+            setInputsFromTimetable(timetable);
+            renderFullTimetable(timetable);
+            renderDaySchedule(document.getElementById("day-dropdown").value, timetable);
+            foldInputForm();
+            alert("Timetable loaded from file!");
+        } catch (err) {
+            alert("Invalid JSON file.");
+        }
+    };
+    reader.readAsText(file);
+}
+
 document.getElementById("save-btn").addEventListener("click", saveTimetable);
 document.getElementById("day-dropdown").addEventListener("change", function() {
     const timetable = JSON.parse(localStorage.getItem("schoolTimetable") || '{}');
@@ -125,6 +156,8 @@ document.getElementById("day-dropdown").addEventListener("change", function() {
 });
 document.getElementById("save-google-btn").addEventListener("click", saveToGoogleSheets);
 document.getElementById("toggle-form-btn").addEventListener("click", unfoldInputForm);
+document.getElementById("download-json-btn").addEventListener("click", downloadTimetableJSON);
+document.getElementById("upload-json").addEventListener("change", uploadTimetableJSON);
 
 createInputTable();
 loadTimetable();
