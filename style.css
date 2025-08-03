@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+h1, h2 {
+    text-align: center;
+}
+#input-table, .display-table, .day-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+#input-table th, #input-table td,
+.display-table th, .display-table td,
+.day-table th, .day-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+.period-input {
+    width: 90%;
+    padding: 4px;
+    box-sizing: border-box;
+}
+#save-btn {
+    display: block;
+    margin: 16px auto;
+    padding: 10px 24px;
+    background: #0078d7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+#save-btn:hover {
+    background: #005fa3;
+}
+.day-select {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.day-view {
+    margin: 0 auto;
+    max-width: 400px;
+}
+@media (max-width: 600px) {
+    .container {
+        padding: 8px;
+    }
+    #input-table th, #input-table td,
+    .display-table th, .display-table td,
+    .day-table th, .day-table td {
+        padding: 4px;
+        font-size: 0.9rem;
+    }
+    .day-view {
+        max-width: 100%;
+    }
+}
