@@ -52,6 +52,7 @@ function saveTimetable() {
     localStorage.setItem("schoolTimetable", JSON.stringify(timetable));
     renderFullTimetable(timetable);
     renderDaySchedule(document.getElementById("day-dropdown").value, timetable);
+    foldInputForm();
 }
 
 function loadTimetable() {
@@ -108,12 +109,22 @@ function saveToGoogleSheets() {
     });
 }
 
+function foldInputForm() {
+    document.getElementById("timetable-form").style.display = "none";
+    document.getElementById("toggle-form-btn").style.display = "block";
+}
+function unfoldInputForm() {
+    document.getElementById("timetable-form").style.display = "block";
+    document.getElementById("toggle-form-btn").style.display = "none";
+}
+
 document.getElementById("save-btn").addEventListener("click", saveTimetable);
 document.getElementById("day-dropdown").addEventListener("change", function() {
     const timetable = JSON.parse(localStorage.getItem("schoolTimetable") || '{}');
     renderDaySchedule(this.value, timetable);
 });
 document.getElementById("save-google-btn").addEventListener("click", saveToGoogleSheets);
+document.getElementById("toggle-form-btn").addEventListener("click", unfoldInputForm);
 
 createInputTable();
 loadTimetable();
