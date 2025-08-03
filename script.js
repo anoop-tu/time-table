@@ -65,6 +65,24 @@ function loadTimetable() {
     }
 }
 
+async function loadDefaultTimetableIfNone() {
+    if (!localStorage.getItem("schoolTimetable")) {
+        try {
+            const response = await fetch("school_timetable.json");
+            if (response.ok) {
+                const timetable = await response.json();
+                localStorage.setItem("schoolTimetable", JSON.stringify(timetable));
+                setInputsFromTimetable(timetable);
+                renderFullTimetable(timetable);
+                renderDaySchedule(document.getElementById("day-dropdown").value, timetable);
+                foldInputForm();
+            }
+        } catch (err) {
+            // Ignore if file not found or fetch fails
+        }
+    }
+}
+
 function renderFullTimetable(timetable) {
     const container = document.getElementById("full-timetable");
     let html = '<table class="display-table"><thead><tr><th>Day</th>';
@@ -161,3 +179,4 @@ document.getElementById("upload-json").addEventListener("change", uploadTimetabl
 
 createInputTable();
 loadTimetable();
+loadDefaultTimetableIfNone();
